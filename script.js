@@ -2,7 +2,7 @@ var modal = document.querySelector('.w6VYqd').querySelectorAll('.aIFcqe')[1]
 var cards = document.querySelectorAll('[role="article"]')
 var list = document.querySelector('[role="feed"]')
 var obs = new MutationObserver(callback)
-var counter = counter ? counter : 0
+var counter = 0
 
 cards[counter].firstChild.click()
 obs.observe(modal, {childList : true})
@@ -16,7 +16,6 @@ function callback() {
     console.log(adress)
     counter++
     if (counter == cards.length - 1) {
-        list.scrollTo({top : list.scrollHeight})
         obs.disconnect()
     }
     else {
