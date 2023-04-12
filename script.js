@@ -15,7 +15,7 @@ function callback() {
     console.log(phone)
     console.log(adress)
     counter++
-    if (counter == cards.length - 1) {
+    if (counter == cards.length) {
         obs.disconnect()
     }
     else {
