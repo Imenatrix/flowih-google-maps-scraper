@@ -1,5 +1,5 @@
-var coiso = document.querySelectorAll('[role="main"')[1].parentElement
-console.log(coiso)
+var modal = document.querySelectorAll('[role="main"')[1].parentElement
+console.log(modal)
 var obs = new MutationObserver(() => {
     var name = document.querySelector('.DUwDvf')?.textContent
     var phone = document.querySelector('[data-item-id^="phone:"]')?.ariaLabel.split(': ')[1]
@@ -8,4 +8,4 @@ var obs = new MutationObserver(() => {
     console.log(phone)
     console.log(adress)
 })
-obs.observe(coiso, {childList : true})
+obs.observe(modal, {childList : true})
