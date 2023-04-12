@@ -15,4 +15,8 @@ async function carregar() {
     });
 }
 
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    console.log(message)
+})
+
 btnCarregar.addEventListener('click', carregar)
