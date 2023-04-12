@@ -1,6 +1,6 @@
-var modal = document.querySelectorAll('[role="main"')[1].parentElement
-var cards = document.querySelectorAll('[role="article"')
-var list = document.querySelector('[role="feed"')
+var modal = document.querySelectorAll('[role="main"]')[1].parentElement
+var cards = document.querySelectorAll('[role="article"]')
+var list = document.querySelector('[role="feed"]')
 var obs = new MutationObserver(callback)
 var counter = counter ? counter : 0
 
