@@ -1,11 +1,12 @@
 var modal = document.querySelectorAll('[role="main"')[1].parentElement
 var cards = document.querySelectorAll('[role="article"')
+var obs = new MutationObserver(callback)
 var counter = 0
 
 cards[0].firstChild.click()
+obs.observe(modal, {childList : true})
 
-console.log(modal)
-var obs = new MutationObserver(() => {
+function callback() {
     var name = document.querySelector('.DUwDvf')?.textContent
     var phone = document.querySelector('[data-item-id^="phone:"]')?.ariaLabel.split(': ')[1]
     var adress = document.querySelector('[data-item-id="address"]')?.ariaLabel.split(': ')[1]
@@ -14,5 +15,4 @@ var obs = new MutationObserver(() => {
     console.log(adress)
     counter ++
     cards[counter].firstChild.click()
-})
-obs.observe(modal, {childList : true})
+}
