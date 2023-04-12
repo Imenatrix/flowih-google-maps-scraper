@@ -5,28 +5,42 @@ var list = document.querySelector('[role="feed"]')
 var obs = new MutationObserver(callback)
 var counter = 0;
 
-(modal_button || cards[1].firstChild).click()
 obs.observe(modal, {childList : true})
 
 var output = []
+var free_lock
+var lock = new Promise((resolve, reject) => {
+    free_lock = resolve
+})
 
 function callback() {
-    if (counter == cards.length) {
-        chrome.runtime.sendMessage({type : 'completed', payload : output})
-        obs.disconnect()
-    }
-    else {
-        cards[counter].firstChild.click()
-    }
-
-    if (counter > 0) {
-        var name = document.querySelector('.DUwDvf')?.textContent
-        var phone = document.querySelector('[data-item-id^="phone:"]')?.ariaLabel.split(': ')[1]
-        var adress = document.querySelector('[data-item-id="address"]')?.ariaLabel.split(': ')[1]
-        var line = [name, phone, `"${adress}"`]
-        console.log(line)
-        output.push(line)
-    }
-
-    counter++
+    free_lock()
+    lock = new Promise((resolve, reject) => {
+        free_lock = resolve
+    })
 }
+
+function scrape() {
+    return new Promise(async (resolve) => {
+        if (modal_button) {
+            modal_button.click()
+            await lock
+        }
+        for (let card of cards) {
+            card.firstChild.click()
+            await lock
+            var name = document.querySelector('.DUwDvf')?.textContent
+            var phone = document.querySelector('[data-item-id^="phone:"]')?.ariaLabel.split(': ')[1]
+            var adress = document.querySelector('[data-item-id="address"]')?.ariaLabel.split(': ')[1]
+            var line = [name, phone, `"${adress}"`]
+            console.log(line)
+            output.push(line)
+        }
+        resolve()
+    })
+}
+
+scrape().then(() => {
+    chrome.runtime.sendMessage({type : 'completed', payload : output})
+    obs.disconnect()
+})
