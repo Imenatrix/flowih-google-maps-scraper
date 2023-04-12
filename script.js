@@ -13,6 +13,11 @@ function callback() {
     console.log(name)
     console.log(phone)
     console.log(adress)
-    counter ++
-    cards[counter].firstChild.click()
+    counter++
+    if (counter == cards.length - 1) {
+        obs.disconnect()
+    }
+    else {
+        cards[counter].firstChild.click()
+    }
 }
