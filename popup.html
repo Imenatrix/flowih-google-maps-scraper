@@ -1,9 +1,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
+        <style>
+            body {
+                width: 30em;
+                height: 20em;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
     </head>
     <body>
-        <button id="btn-carregar">Carregar</button>
+        <h1>
+            <span id="count">0</span> Lugares Carregados
+        </h1>
+        <button id="btn-carregar">Exportar</button>
         <script src="popup.js"></script>
     </body>
 </html>

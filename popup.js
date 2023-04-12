@@ -26,6 +26,20 @@ async function carregar() {
     });
 }
 
+async function loadCount() {
+    const tab = await getCurrentTab()
+    const result = await chrome.scripting.executeScript({
+        target : {tabId : tab.id},
+        func : () => {
+            var cards = document.querySelectorAll('[role="article"]')
+            return cards.length
+        }
+    })
+    const number = result[0].result
+    const span = document.getElementById('count')
+    span.innerText = number
+}
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     const output = convertArrayToCSV(message.payload);
     const blob = new Blob([output], {type : 'text/csv;charset=utf-8;'})
@@ -38,6 +52,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
     document.body.appendChild(link)
 })
+
+loadCount()
 
 btnCarregar.addEventListener('click', carregar)
 
