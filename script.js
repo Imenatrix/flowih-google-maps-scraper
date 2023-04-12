@@ -13,7 +13,7 @@ function callback() {
     var name = document.querySelector('.DUwDvf')?.textContent
     var phone = document.querySelector('[data-item-id^="phone:"]')?.ariaLabel.split(': ')[1]
     var adress = document.querySelector('[data-item-id="address"]')?.ariaLabel.split(': ')[1]
-    output.push([name, phone, adress])
+    output.push([name, phone, `"${adress}"`])
     counter++
     if (counter == cards.length) {
         chrome.runtime.sendMessage({type : 'completed', payload : output})
