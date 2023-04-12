@@ -58,24 +58,9 @@ loadCount()
 btnCarregar.addEventListener('click', carregar)
 
 function convertArrayToCSV(array) {
-    let output = '';
-    for (let i = 0; i < array.length; i++) {
-        const row = array[i];
-
-        let line = '';
-        for (let j = 0; j < row.length; j++) {
-            const cell = row[j];
-            if (cell) {
-                line += cell.trim();
-            }
-            if (j != row.length - 1) {
-                line += ',';
-            }
-        }
-        if (i != array.length - 1) {
-            line += '\n';
-        }
-        output += line;
-    }
-    return output;
+    return array.map(
+        line => line.map(
+            cell => (cell || '').toString().trim()
+        ).join(',')
+    ).join('\n')
 }
