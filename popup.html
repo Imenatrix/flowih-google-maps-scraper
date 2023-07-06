@@ -2,21 +2,101 @@
     <head>
         <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
         <style>
+            @import url('https://fonts.googleapis.com/css?family=Inter&display=swap');
+        
             body {
-                width: 30em;
-                height: 20em;
+                display: inline-flex;
+                padding: 28.286px 48px;
+                justify-content: center;
+                align-items: center;
+                border-radius: 12px;
+                background: #FFF;
+            }
+        
+            .frame {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                gap: 24px;
+            }
+        
+            .icon-pin {
+                width: 15px;
+                height: 21.429px;
+                flex-shrink: 0;
+            }
+        
+            .text {
+                color: #000;
+                font-family: Inter;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+        
+            .header {
+                display: flex;
+                width: 194px;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+            }
+        
+            .icon-export {
+                width: 24px;
+                height: 24px;
+                flex-shrink: 0;
+            }
+        
+            .text-export {
+                color: #000;
+                font-family: Inter;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+        
+            button {
+                display: flex;
+                width: 194px;
+                padding: 8px;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                border-radius: 24px;
+                border: 1px solid #B5ACAC;
+            }
+        
+            button:hover {
+                background: #E0E9F8;
             }
         </style>
     </head>
     <body>
-        <h1>
-            <span id="count">0</span> Lugares Carregados
-        </h1>
-        <button id="btn-carregar">Exportar</button>
+        <div class="frame">
+            <div class="header">
+                <svg class="icon-pin" xmlns="http://www.w3.org/2000/svg" width="15" height="22" viewBox="0 0 15 22" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.78391 1.28941C6.12484 -0.070773 9.00223 -0.0469992 11.3212 1.35169C13.6174 2.77886 15.0129 5.32594 14.9999 8.06589C14.9465 10.7879 13.45 13.3465 11.5795 15.3245C10.4999 16.4712 9.29214 17.4853 7.98095 18.3459C7.84591 18.424 7.69799 18.4762 7.54449 18.5001C7.39676 18.4938 7.25288 18.4502 7.12585 18.3731C5.12406 17.08 3.36788 15.4294 1.9418 13.5008C0.748492 11.8908 0.0705386 9.94579 1.24472e-06 7.92979C-0.00154788 5.18458 1.44297 2.64959 3.78391 1.28941ZM5.13701 9.06602C5.53079 10.0368 6.46026 10.67 7.49143 10.67C8.16697 10.6749 8.81635 10.4043 9.29487 9.91856C9.7734 9.43282 10.0413 8.77229 10.0389 8.08416C10.0425 7.03378 9.42414 6.08479 8.4725 5.68028C7.52086 5.27577 6.42368 5.49554 5.69325 6.23697C4.96283 6.9784 4.74324 8.09524 5.13701 9.06602Z" fill="#EE675C"/>
+                    <ellipse opacity="0.4" cx="7.49952" cy="20.6429" rx="5.35717" ry="1.07143" fill="#EE675C"/>
+                </svg>
+                <span class="text">
+                    <span id="count">0</span> Lugares carregados
+                </span>
+            </div>
+            <button id="btn-carregar">
+                <svg class="icon-export" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                    <path d="M21.5 15.7143V19.7143C21.5 20.2447 21.2893 20.7534 20.9142 21.1285C20.5391 21.5036 20.0304 21.7143 19.5 21.7143H5.5C4.96957 21.7143 4.46086 21.5036 4.08579 21.1285C3.71071 20.7534 3.5 20.2447 3.5 19.7143V15.7143" stroke="#5491F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M17.5 8.71429L12.5 3.71429L7.5 8.71429" stroke="#5491F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12.5 3.71429V15.7143" stroke="#5491F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="text-exportar">
+                    Exportar
+                </span>
+            </button>
+        </div>
         <script src="popup.js"></script>
     </body>
 </html>
