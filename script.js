@@ -1,6 +1,6 @@
 var modal = document.querySelector('.w6VYqd').querySelectorAll('.aIFcqe')[1]
 var modal_button = document.querySelector('svg')?.parentElement.parentElement
-var cards = document.querySelectorAll('[role="article"]')
+var cards = document.querySelectorAll('.Nv2PK')
 var list = document.querySelector('[role="feed"]')
 var obs = new MutationObserver(callback)
 var counter = 0;

@@ -31,7 +31,7 @@ async function loadCount() {
     const result = await chrome.scripting.executeScript({
         target : {tabId : tab.id},
         func : () => {
-            var cards = document.querySelectorAll('[role="article"]')
+            var cards = document.querySelectorAll('.Nv2PK')
             return cards.length
         }
     })
